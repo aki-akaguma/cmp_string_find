@@ -2,9 +2,14 @@ use anyhow::Context;
 use std::io::BufRead;
 
 pub fn run(_program: &str, _args: &[&str]) -> anyhow::Result<()> {
-    let mut bench_vec = get_bench("z.bench.log")?;
+    let mut bench_vec_1 = get_bench("z.bench.en.1.log")?;
+    let mut bench_vec_2 = get_bench("z.bench.ja.1.log")?;
     //set_size(&mut bench_vec, "z.size-release.curl.log")?;
-    output(bench_vec)?;
+    println!("en:");
+    output(bench_vec_1)?;
+    println!("");
+    println!("ja:");
+    output(bench_vec_2)?;
     //
     //let mut bench_vec = get_bench("z.bench-release-s.curl.log")?;
     //set_size(&mut bench_vec, "z.size-release.curl.log")?;
