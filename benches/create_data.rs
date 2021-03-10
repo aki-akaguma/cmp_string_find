@@ -14,7 +14,7 @@ pub fn create_data_en_1() -> (Vec<String>, usize, &'static str, &'static str, &'
     let mut i = 0;
     loop {
         i += 1;
-        if i > 300 {
+        if i > 140 {
             break;
         }
         if i % 2 == 0 {
@@ -34,7 +34,7 @@ pub fn create_data_ja_1() -> (Vec<String>, usize, &'static str, &'static str, &'
     let mut i = 0;
     loop {
         i += 1;
-        if i > 300 {
+        if i > 140 {
             break;
         }
         if i % 2 == 0 {

@@ -30,7 +30,7 @@ globset = "0.4"
 globber = "0.1"
 
 [dev-dependencies]
-criterion = "=0.3.3"
+criterion = "0.3"
 criterion-cycles-per-byte = "0.1"
 
 [workspace]

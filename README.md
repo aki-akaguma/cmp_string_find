@@ -6,33 +6,33 @@ rustc 1.50.0 (cb75ad5db 2021-02-10)
 en:
 |         `name`         |   `bench`   |
 |:-----------------------|------------:|
-| match-string-memchr    |   26.860 kc |
-| match-regex-regex      |   43.896 kc |
-| match-regex-fancy      |   50.574 kc |
-| match-string-aho       |   74.022 kc |
-| match-string-memmem    |  125.493 kc |
-| match-regex-pcre       |  166.933 kc |
-| match-string-twoway    |  200.824 kc |
-| match-string-std       |  217.625 kc |
-| match-regex-onig       |  311.354 kc |
-| match-glob-globset     |  644.282 kc |
-| match-glob-globber     | 2678.772 kc |
-| match-glob-glob        | 4737.899 kc |
-| match-glob-capturing   | 5029.252 kc |
+| match-string-memchr    |   12.519 kc |
+| match-regex-regex      |   20.611 kc |
+| match-regex-fancy      |   23.646 kc |
+| match-string-aho       |   34.361 kc |
+| match-string-memmem    |   58.536 kc |
+| match-regex-pcre       |   78.797 kc |
+| match-string-twoway    |   92.087 kc |
+| match-string-std       |  101.663 kc |
+| match-regex-onig       |  143.147 kc |
+| match-glob-globset     |  302.927 kc |
+| match-glob-globber     | 1240.582 kc |
+| match-glob-glob        | 2216.223 kc |
+| match-glob-capturing   | 2347.241 kc |
 
 ja:
 |         `name`         |   `bench`   |
 |:-----------------------|------------:|
-| match-string-memchr    |   26.689 kc |
-| match-regex-regex      |   43.936 kc |
-| match-regex-fancy      |   50.795 kc |
-| match-string-aho       |   81.549 kc |
-| match-string-memmem    |   90.230 kc |
-| match-string-twoway    |  174.929 kc |
-| match-string-std       |  177.071 kc |
-| match-regex-onig       |  299.040 kc |
-| match-regex-pcre       |  469.573 kc |
-| match-glob-globset     |  642.470 kc |
-| match-glob-globber     | 1440.961 kc |
-| match-glob-glob        | 2063.705 kc |
-| match-glob-capturing   | 2143.511 kc |
+| match-string-memchr    |   12.533 kc |
+| match-regex-regex      |   20.644 kc |
+| match-regex-fancy      |   23.549 kc |
+| match-string-aho       |   37.857 kc |
+| match-string-memmem    |   42.407 kc |
+| match-string-twoway    |   80.828 kc |
+| match-string-std       |   80.931 kc |
+| match-regex-onig       |  140.793 kc |
+| match-regex-pcre       |  208.224 kc |
+| match-glob-globset     |  302.382 kc |
+| match-glob-globber     |  682.928 kc |
+| match-glob-glob        |  963.326 kc |
+| match-glob-capturing   | 1007.421 kc |
