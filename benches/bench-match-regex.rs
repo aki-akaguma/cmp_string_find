@@ -2,30 +2,29 @@ use criterion::{criterion_group, criterion_main, Criterion};
 use criterion_cycles_per_byte::CyclesPerByte;
 
 fn process_regex_regex(texts: &[&str], re: &regex::Regex) -> anyhow::Result<usize> {
-    cmp_pattern_match::do_match_regex_regex(texts, re)
+    cmp_string_match::do_match_regex_regex(texts, re)
 }
 
 fn process_regex_fancy(texts: &[&str], re: &fancy_regex::Regex) -> anyhow::Result<usize> {
-    cmp_pattern_match::do_match_regex_fancy(texts, re)
+    cmp_string_match::do_match_regex_fancy(texts, re)
 }
 
 fn process_regex_onig(texts: &[&str], re: &onig::Regex) -> anyhow::Result<usize> {
-    cmp_pattern_match::do_match_regex_onig(texts, re)
+    cmp_string_match::do_match_regex_onig(texts, re)
 }
 
 fn process_regex_pcre(texts: &[&str], re: &pcre2::bytes::Regex) -> anyhow::Result<usize> {
-    cmp_pattern_match::do_match_regex_pcre(texts, re)
+    cmp_string_match::do_match_regex_pcre(texts, re)
 }
 
 mod create_data;
 
 fn criterion_benchmark(c: &mut Criterion<CyclesPerByte>) {
-    let (v, _pat_string_s, pat_regex_s, _pat_glob_s) = create_data::create_data();
+    let (v, match_cnt, _pat_string_s, pat_regex_s, _pat_glob_s) = create_data::create_data();
     let vv: Vec<&str> = v.iter().map(|item| item.as_str()).collect();
     //let pattern = ".*Error.*";
     //let pattern = "Error";
     //let pattern = "夏目漱石";
-    let match_cnt = vv.len() / 2;
     //
     let pat_regex = regex::Regex::new(pat_regex_s).unwrap();
     let pat_fancy = fancy_regex::Regex::new(pat_regex_s).unwrap();

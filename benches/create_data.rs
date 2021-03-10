@@ -1,9 +1,12 @@
-pub fn create_data() -> (Vec<String>, &'static str, &'static str, &'static str) {
-    create_data_en()
-    //create_data_ja()
+pub fn create_data() -> (Vec<String>, usize, &'static str, &'static str, &'static str) {
+    let sw = std::env::var("AKI_TEST_DAT").unwrap_or("en.1".to_string());
+    match sw.as_str() {
+        "ja.1" => create_data_ja_1(),
+        _ => create_data_en_1(),
+    }
 }
 
-pub fn create_data_en() -> (Vec<String>, &'static str, &'static str, &'static str) {
+pub fn create_data_en_1() -> (Vec<String>, usize, &'static str, &'static str, &'static str) {
     let s1 =
         "abcdefghijk1234567890".repeat(10) + "ErrWarnAlert" + "abcdefghijklmno".repeat(10).as_str();
     let s2 = "abcdefghijk1234567890".repeat(10) + "abcdefghijklmno".repeat(10).as_str();
@@ -20,10 +23,11 @@ pub fn create_data_en() -> (Vec<String>, &'static str, &'static str, &'static st
             v.push(s2.clone());
         }
     }
-    (v, "ErrWarnAlert", "ErrWarnAlert", "*ErrWarnAlert*")
+    let match_cnt = v.len()/2;
+    (v, match_cnt, "ErrWarnAlert", "ErrWarnAlert", "*ErrWarnAlert*")
 }
 
-pub fn create_data_ja() -> (Vec<String>, &'static str, &'static str, &'static str) {
+pub fn create_data_ja_1() -> (Vec<String>, usize, &'static str, &'static str, &'static str) {
     let s1 = "吾輩は猫である".repeat(10) + "夏目漱石" + "坊っちゃん".repeat(10).as_str();
     let s2 = "名前はまだない".repeat(10) + "坊っちゃん".repeat(10).as_str();
     let mut v: Vec<String> = Vec::new();
@@ -39,5 +43,6 @@ pub fn create_data_ja() -> (Vec<String>, &'static str, &'static str, &'static st
             v.push(s2.clone());
         }
     }
-    (v, "夏目漱石", "夏目漱石", "*夏目漱石*")
+    let match_cnt = v.len()/2;
+    (v, match_cnt, "夏目漱石", "夏目漱石", "*夏目漱石*")
 }

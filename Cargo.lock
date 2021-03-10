@@ -182,7 +182,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "cmp_pattern_match"
+name = "cmp_string_match"
 version = "0.1.0"
 dependencies = [
  "aho-corasick",

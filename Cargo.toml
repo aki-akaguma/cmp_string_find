@@ -21,7 +21,7 @@ sliceslice = "0.2"  # avx2
 
 regex = "1.4"
 fancy-regex = "0.5"
-onig = "6.1"        # ruby compatible
+onig = "6.1"        # Oniguruma, ruby compatible
 pcre2 = "0.2"       # perl compatible
 
 glob = "0.3"

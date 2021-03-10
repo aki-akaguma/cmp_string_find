@@ -8,6 +8,9 @@ bench:
 	cargo bench --bench=bench-match-regex -- -n | tee -a z.bench.log
 	cargo bench --bench=bench-match-glob -- -n | tee -a z.bench.log
 
+bench-build:
+	cargo bench --no-run
+
 bench-clean:
 	@rm -fr target/criterion
 
