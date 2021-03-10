@@ -1,0 +1,58 @@
+[package]
+name = "cmp_string_match"
+version = "0.1.0"
+authors = ["aki <aki.akaguma@hotmail.com>"]
+edition = "2018"
+description = "research: comparing string match of rust"
+keywords = ["polymorphism"]
+categories = ["rust-patterns"]
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+
+[features]
+
+[dependencies]
+anyhow = "1.0"
+twoway = "0.2"
+aho-corasick = "0.7"
+memchr = "2.3"      # sse2
+memmem = "0.1"      # two way
+sliceslice = "0.2"  # avx2
+
+regex = "1.4"
+fancy-regex = "0.5"
+onig = "6.1"        # ruby compatible
+pcre2 = "0.2"       # perl compatible
+
+glob = "0.3"
+capturing-glob = "0.1"
+globset = "0.4"
+globber = "0.1"
+
+[dev-dependencies]
+criterion = "=0.3.3"
+criterion-cycles-per-byte = "0.1"
+
+[workspace]
+members = [
+    "xtask",
+]
+
+[[bench]]
+name = "bench-match-string"
+path = "benches/bench-match-string.rs"
+harness = false
+
+[[bench]]
+name = "bench-match-regex"
+path = "benches/bench-match-regex.rs"
+harness = false
+
+[[bench]]
+name = "bench-match-glob"
+path = "benches/bench-match-glob.rs"
+harness = false
+
+[[bin]]
+name = "bin-match-string"
+path = "src/bin-match-string.rs"
