@@ -6,33 +6,35 @@ rustc 1.50.0 (cb75ad5db 2021-02-10)
 en:
 |         `name`         |   `bench`   |
 |:-----------------------|------------:|
-| match-string-memchr    |   12.519 kc |
-| match-regex-regex      |   20.611 kc |
-| match-regex-fancy      |   23.646 kc |
-| match-string-aho       |   34.361 kc |
-| match-string-memmem    |   58.536 kc |
-| match-regex-pcre       |   78.797 kc |
-| match-string-twoway    |   92.087 kc |
-| match-string-std       |  101.663 kc |
-| match-regex-onig       |  143.147 kc |
-| match-glob-globset     |  302.927 kc |
-| match-glob-globber     | 1240.582 kc |
-| match-glob-glob        | 2216.223 kc |
-| match-glob-capturing   | 2347.241 kc |
+| match-string-memchr    |   12.539 kc |
+| match-regex-regex      |   18.928 kc |
+| match-regex-fancy      |   22.688 kc |
+| match-string-aho       |   34.394 kc |
+| match-string-libc      |   37.376 kc |
+| match-string-memmem    |   53.627 kc |
+| match-regex-pcre       |   81.956 kc |
+| match-string-twoway    |   97.743 kc |
+| match-string-std       |  105.379 kc |
+| match-regex-onig       |  146.449 kc |
+| match-glob-globset     |  286.613 kc |
+| match-glob-globber     | 1245.398 kc |
+| match-glob-glob        | 2235.350 kc |
+| match-glob-capturing   | 2318.177 kc |
 
 ja:
 |         `name`         |   `bench`   |
 |:-----------------------|------------:|
-| match-string-memchr    |   12.533 kc |
-| match-regex-regex      |   20.644 kc |
-| match-regex-fancy      |   23.549 kc |
-| match-string-aho       |   37.857 kc |
-| match-string-memmem    |   42.407 kc |
-| match-string-twoway    |   80.828 kc |
-| match-string-std       |   80.931 kc |
-| match-regex-onig       |  140.793 kc |
-| match-regex-pcre       |  208.224 kc |
-| match-glob-globset     |  302.382 kc |
-| match-glob-globber     |  682.928 kc |
-| match-glob-glob        |  963.326 kc |
-| match-glob-capturing   | 1007.421 kc |
+| match-string-memchr    |   12.470 kc |
+| match-regex-regex      |   19.077 kc |
+| match-regex-fancy      |   22.827 kc |
+| match-string-aho       |   36.416 kc |
+| match-string-memmem    |   41.918 kc |
+| match-string-libc      |   46.832 kc |
+| match-string-twoway    |   83.241 kc |
+| match-string-std       |   89.070 kc |
+| match-regex-onig       |  140.230 kc |
+| match-regex-pcre       |  215.313 kc |
+| match-glob-globset     |  286.490 kc |
+| match-glob-globber     |  674.985 kc |
+| match-glob-glob        |  981.140 kc |
+| match-glob-capturing   |  999.353 kc |

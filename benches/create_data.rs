@@ -23,8 +23,14 @@ pub fn create_data_en_1() -> (Vec<String>, usize, &'static str, &'static str, &'
             v.push(s2.clone());
         }
     }
-    let match_cnt = v.len()/2;
-    (v, match_cnt, "ErrWarnAlert", "ErrWarnAlert", "*ErrWarnAlert*")
+    let match_cnt = v.len() / 2;
+    (
+        v,
+        match_cnt,
+        "ErrWarnAlert",
+        "ErrWarnAlert",
+        "*ErrWarnAlert*",
+    )
 }
 
 pub fn create_data_ja_1() -> (Vec<String>, usize, &'static str, &'static str, &'static str) {
@@ -43,6 +49,6 @@ pub fn create_data_ja_1() -> (Vec<String>, usize, &'static str, &'static str, &'
             v.push(s2.clone());
         }
     }
-    let match_cnt = v.len()/2;
+    let match_cnt = v.len() / 2;
     (v, match_cnt, "夏目漱石", "夏目漱石", "*夏目漱石*")
 }

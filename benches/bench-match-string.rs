@@ -21,6 +21,10 @@ fn process_string_aho(texts: &[&str], pat: &aho_corasick::AhoCorasick) -> anyhow
     cmp_string_match::do_match_string_aho(texts, pat)
 }
 
+fn process_string_libc(texts: &[&str], pattern: &str) -> anyhow::Result<usize> {
+    cmp_string_match::do_match_string_libc(texts, pattern)
+}
+
 mod create_data;
 
 fn criterion_benchmark(c: &mut Criterion<CyclesPerByte>) {
@@ -86,6 +90,18 @@ fn criterion_benchmark(c: &mut Criterion<CyclesPerByte>) {
             unreachable!();
         }
     }
+    match process_string_libc(
+        criterion::black_box(&vv),
+        criterion::black_box(pat_string_s),
+    ) {
+        Ok(n) => {
+            assert_eq!(n, match_cnt);
+        }
+        Err(err) => {
+            eprintln!("{}", err);
+            unreachable!();
+        }
+    }
     //
     c.bench_function("match-string-std", |b| {
         b.iter(|| {
@@ -120,6 +136,14 @@ fn criterion_benchmark(c: &mut Criterion<CyclesPerByte>) {
     c.bench_function("match-string-aho", |b| {
         b.iter(|| {
             let _r = process_string_aho(criterion::black_box(&vv), criterion::black_box(&pat_aho));
+        })
+    });
+    c.bench_function("match-string-libc", |b| {
+        b.iter(|| {
+            let _r = process_string_libc(
+                criterion::black_box(&vv),
+                criterion::black_box(pat_string_s),
+            );
         })
     });
 }

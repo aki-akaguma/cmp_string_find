@@ -1,9 +1,8 @@
 pub fn do_match_string_std(texts: &[&str], pattern: &str) -> anyhow::Result<usize> {
     let mut found: usize = 0;
     for line in texts {
-        match line.find(pattern) {
-            Some(_n) => found += 1,
-            None => (),
+        if let Some(_n) = line.find(pattern) {
+            found += 1;
         }
     }
     Ok(found)
@@ -12,9 +11,8 @@ pub fn do_match_string_std(texts: &[&str], pattern: &str) -> anyhow::Result<usiz
 pub fn do_match_string_twoway(texts: &[&str], pattern: &str) -> anyhow::Result<usize> {
     let mut found: usize = 0;
     for line in texts {
-        match twoway::find_str(line, pattern) {
-            Some(_n) => found += 1,
-            None => (),
+        if let Some(_n) = twoway::find_str(line, pattern) {
+            found += 1;
         }
     }
     Ok(found)
@@ -23,9 +21,8 @@ pub fn do_match_string_twoway(texts: &[&str], pattern: &str) -> anyhow::Result<u
 pub fn do_match_string_memchr(texts: &[&str], pattern: &str) -> anyhow::Result<usize> {
     let mut found: usize = 0;
     for line in texts {
-        match memchr_find_str(line, pattern) {
-            Some(_n) => found += 1,
-            None => (),
+        if let Some(_n) = memchr_find_str(line, pattern) {
+            found += 1;
         }
     }
     Ok(found)
@@ -70,9 +67,8 @@ pub fn do_match_string_memmem(
     use memmem::Searcher;
     let mut found: usize = 0;
     for line in texts {
-        match pat.search_in(line.as_bytes()) {
-            Some(_n) => found += 1,
-            None => (),
+        if let Some(_n) = pat.search_in(line.as_bytes()) {
+            found += 1;
         }
     }
     Ok(found)
@@ -84,9 +80,28 @@ pub fn do_match_string_aho(
 ) -> anyhow::Result<usize> {
     let mut found: usize = 0;
     for line in texts {
-        match pat.find(line) {
-            Some(_n) => found += 1,
-            None => (),
+        if let Some(_n) = pat.find(line) {
+            found += 1;
+        }
+    }
+    Ok(found)
+}
+
+pub fn do_match_string_libc(texts: &[&str], pattern: &str) -> anyhow::Result<usize> {
+    use libc::c_void;
+    use libc::memmem;
+    let needle_ptr = pattern.as_bytes().as_ptr() as *const c_void;
+    let needle_len = pattern.as_bytes().len();
+    let mut found: usize = 0;
+    for line in texts {
+        let haystack = line.as_bytes();
+        let haystack_ptr = haystack.as_ptr() as *const c_void;
+        let haystack_len = haystack.len();
+        unsafe {
+            let p = memmem(haystack_ptr, haystack_len, needle_ptr, needle_len);
+            if !p.is_null() {
+                found += 1;
+            }
         }
     }
     Ok(found)
@@ -100,9 +115,8 @@ pub fn do_match_regex_regex(texts: &[&str], re: &regex::Regex) -> anyhow::Result
             found += 1;
         }
         */
-        match re.find(line) {
-            Some(_m) => found += 1,
-            None => (),
+        if let Some(_m) = re.find(line) {
+            found += 1;
         }
     }
     Ok(found)
@@ -116,9 +130,8 @@ pub fn do_match_regex_fancy(texts: &[&str], re: &fancy_regex::Regex) -> anyhow::
             found += 1;
         }
         */
-        match re.find(line).unwrap() {
-            Some(_m) => found += 1,
-            None => (),
+        if let Some(_m) = re.find(line).unwrap() {
+            found += 1;
         }
     }
     Ok(found)
@@ -132,9 +145,8 @@ pub fn do_match_regex_onig(texts: &[&str], re: &onig::Regex) -> anyhow::Result<u
             found += 1;
         }
         */
-        match re.find(line) {
-            Some(_m) => found += 1,
-            None => (),
+        if let Some(_m) = re.find(line) {
+            found += 1;
         }
     }
     Ok(found)
@@ -148,9 +160,8 @@ pub fn do_match_regex_pcre(texts: &[&str], re: &pcre2::bytes::Regex) -> anyhow::
             found += 1;
         }
         */
-        match re.find(line.as_bytes()).unwrap() {
-            Some(_m) => found += 1,
-            None => (),
+        if let Some(_m) = re.find(line.as_bytes()).unwrap() {
+            found += 1;
         }
     }
     Ok(found)
