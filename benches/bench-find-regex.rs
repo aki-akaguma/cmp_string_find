@@ -2,19 +2,19 @@ use criterion::{criterion_group, criterion_main, Criterion};
 use criterion_cycles_per_byte::CyclesPerByte;
 
 fn process_regex_regex(texts: &[&str], re: &regex::Regex) -> anyhow::Result<usize> {
-    cmp_string_match::do_find_regex_regex(texts, re)
+    cmp_string_find::do_find_regex_regex(texts, re)
 }
 
 fn process_regex_fancy(texts: &[&str], re: &fancy_regex::Regex) -> anyhow::Result<usize> {
-    cmp_string_match::do_find_regex_fancy(texts, re)
+    cmp_string_find::do_find_regex_fancy(texts, re)
 }
 
 fn process_regex_onig(texts: &[&str], re: &onig::Regex) -> anyhow::Result<usize> {
-    cmp_string_match::do_find_regex_onig(texts, re)
+    cmp_string_find::do_find_regex_onig(texts, re)
 }
 
 fn process_regex_pcre(texts: &[&str], re: &pcre2::bytes::Regex) -> anyhow::Result<usize> {
-    cmp_string_match::do_find_regex_pcre(texts, re)
+    cmp_string_find::do_find_regex_pcre(texts, re)
 }
 
 mod create_data;

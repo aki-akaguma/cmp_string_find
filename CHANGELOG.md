@@ -2,6 +2,8 @@ TBD
 ===
 Unreleased changes. Release notes have not yet been written.
 
+* rename crate name: cmp_string_match to cmp_string_find
+
 0.1.2 (2021-03-13)
 =====
 

@@ -1,5 +1,5 @@
 [package]
-name = "cmp_string_match"
+name = "cmp_string_find"
 version = "0.1.2"
 authors = ["aki <aki.akaguma@hotmail.com>"]
 edition = "2018"

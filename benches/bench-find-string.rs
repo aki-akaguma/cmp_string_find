@@ -2,27 +2,27 @@ use criterion::{criterion_group, criterion_main, Criterion};
 use criterion_cycles_per_byte::CyclesPerByte;
 
 fn process_string_std(texts: &[&str], pattern: &str) -> anyhow::Result<usize> {
-    cmp_string_match::do_find_string_std(texts, pattern)
+    cmp_string_find::do_find_string_std(texts, pattern)
 }
 
 fn process_string_twoway(texts: &[&str], pattern: &str) -> anyhow::Result<usize> {
-    cmp_string_match::do_find_string_twoway(texts, pattern)
+    cmp_string_find::do_find_string_twoway(texts, pattern)
 }
 
 fn process_string_memchr(texts: &[&str], pattern: &str) -> anyhow::Result<usize> {
-    cmp_string_match::do_find_string_memchr(texts, pattern)
+    cmp_string_find::do_find_string_memchr(texts, pattern)
 }
 
 fn process_string_memmem(texts: &[&str], pat: &memmem::TwoWaySearcher) -> anyhow::Result<usize> {
-    cmp_string_match::do_find_string_memmem(texts, pat)
+    cmp_string_find::do_find_string_memmem(texts, pat)
 }
 
 fn process_string_aho(texts: &[&str], pat: &aho_corasick::AhoCorasick) -> anyhow::Result<usize> {
-    cmp_string_match::do_find_string_aho(texts, pat)
+    cmp_string_find::do_find_string_aho(texts, pat)
 }
 
 fn process_string_libc(texts: &[&str], pattern: &str) -> anyhow::Result<usize> {
-    cmp_string_match::do_find_string_libc(texts, pattern)
+    cmp_string_find::do_find_string_libc(texts, pattern)
 }
 
 mod create_data;

@@ -2,19 +2,19 @@ use criterion::{criterion_group, criterion_main, Criterion};
 use criterion_cycles_per_byte::CyclesPerByte;
 
 fn process_glob_glob(texts: &[&str], pat: &glob::Pattern) -> anyhow::Result<usize> {
-    cmp_string_match::do_find_glob_glob(texts, pat)
+    cmp_string_find::do_find_glob_glob(texts, pat)
 }
 
 fn process_glob_globber(texts: &[&str], pat: &globber::Pattern) -> anyhow::Result<usize> {
-    cmp_string_match::do_find_glob_globber(texts, pat)
+    cmp_string_find::do_find_glob_globber(texts, pat)
 }
 
 fn process_glob_capturing(texts: &[&str], pat: &capturing_glob::Pattern) -> anyhow::Result<usize> {
-    cmp_string_match::do_find_glob_capturing(texts, pat)
+    cmp_string_find::do_find_glob_capturing(texts, pat)
 }
 
 fn process_glob_globset(texts: &[&str], pat: &globset::GlobMatcher) -> anyhow::Result<usize> {
-    cmp_string_match::do_find_glob_globset(texts, pat)
+    cmp_string_find::do_find_glob_globset(texts, pat)
 }
 
 mod create_data;
