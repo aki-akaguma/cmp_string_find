@@ -2,19 +2,19 @@ use criterion::{criterion_group, criterion_main, Criterion};
 use criterion_cycles_per_byte::CyclesPerByte;
 
 fn process_glob_glob(texts: &[&str], pat: &glob::Pattern) -> anyhow::Result<usize> {
-    cmp_string_match::do_match_glob_glob(texts, pat)
+    cmp_string_match::do_find_glob_glob(texts, pat)
 }
 
 fn process_glob_globber(texts: &[&str], pat: &globber::Pattern) -> anyhow::Result<usize> {
-    cmp_string_match::do_match_glob_globber(texts, pat)
+    cmp_string_match::do_find_glob_globber(texts, pat)
 }
 
 fn process_glob_capturing(texts: &[&str], pat: &capturing_glob::Pattern) -> anyhow::Result<usize> {
-    cmp_string_match::do_match_glob_capturing(texts, pat)
+    cmp_string_match::do_find_glob_capturing(texts, pat)
 }
 
 fn process_glob_globset(texts: &[&str], pat: &globset::GlobMatcher) -> anyhow::Result<usize> {
-    cmp_string_match::do_match_glob_globset(texts, pat)
+    cmp_string_match::do_find_glob_globset(texts, pat)
 }
 
 mod create_data;
@@ -81,12 +81,12 @@ fn criterion_benchmark(c: &mut Criterion<CyclesPerByte>) {
         }
     }
     //
-    c.bench_function("match-glob-glob", |b| {
+    c.bench_function("cmp-glob-glob", |b| {
         b.iter(|| {
             let _r = process_glob_glob(criterion::black_box(&vv), criterion::black_box(&pat_glob));
         })
     });
-    c.bench_function("match-glob-globber", |b| {
+    c.bench_function("cmp-glob-globber", |b| {
         b.iter(|| {
             let _r = process_glob_globber(
                 criterion::black_box(&vv),
@@ -94,7 +94,7 @@ fn criterion_benchmark(c: &mut Criterion<CyclesPerByte>) {
             );
         })
     });
-    c.bench_function("match-glob-capturing", |b| {
+    c.bench_function("cmp-glob-capturing", |b| {
         b.iter(|| {
             let _r = process_glob_capturing(
                 criterion::black_box(&vv),
@@ -102,7 +102,7 @@ fn criterion_benchmark(c: &mut Criterion<CyclesPerByte>) {
             );
         })
     });
-    c.bench_function("match-glob-globset", |b| {
+    c.bench_function("cmp-glob-globset", |b| {
         b.iter(|| {
             let _r = process_glob_globset(
                 criterion::black_box(&vv),

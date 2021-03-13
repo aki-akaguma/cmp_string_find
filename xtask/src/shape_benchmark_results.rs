@@ -4,16 +4,79 @@ use std::io::BufRead;
 pub fn run(_program: &str, _args: &[&str]) -> anyhow::Result<()> {
     let mut bench_vec_1 = get_bench("z.bench.en.1.log")?;
     let mut bench_vec_2 = get_bench("z.bench.ja.1.log")?;
+    let mut bench_vec_3 = get_bench("z.musl.bench.en.1.log")?;
+    let mut bench_vec_4 = get_bench("z.musl.bench.ja.1.log")?;
     //set_size(&mut bench_vec, "z.size-release.curl.log")?;
+    bench_vec_2.sort_by(|a, b| a.name.cmp(&b.name));
+    bench_vec_3.sort_by(|a, b| a.name.cmp(&b.name));
+    bench_vec_4.sort_by(|a, b| a.name.cmp(&b.name));
+    output4(bench_vec_1, bench_vec_2, bench_vec_3, bench_vec_4)?;
+    /*
     println!("en:");
     output(bench_vec_1)?;
     println!("");
     println!("ja:");
     output(bench_vec_2)?;
+    */
     //
     //let mut bench_vec = get_bench("z.bench-release-s.curl.log")?;
     //set_size(&mut bench_vec, "z.size-release.curl.log")?;
     //output(bench_vec)?;
+    //
+    Ok(())
+}
+
+fn output4(
+    bench_vec_1: Vec<BenchStr>,
+    bench_vec_2: Vec<BenchStr>,
+    bench_vec_3: Vec<BenchStr>,
+    bench_vec_4: Vec<BenchStr>,
+) -> anyhow::Result<()> {
+    println!(
+        "| {:^22} | {:^11} | {:^11} | {:^11} | {:^11} |",
+        "`name`", "`bench:en`", "`bench:ja`", "`musl:en`", "`musl:ja`"
+    );
+    println!(
+        "|:{:<22}-|-{:>11}:|-{:>11}:|-{:>11}:|-{:>11}:|",
+        "-".repeat(22),
+        "-".repeat(11),
+        "-".repeat(11),
+        "-".repeat(11),
+        "-".repeat(11)
+    );
+    for bench1 in bench_vec_1 {
+        let idx2 = bench_vec_2
+            .binary_search_by(|item| item.name.cmp(&bench1.name))
+            .unwrap();
+        let idx3 = bench_vec_3
+            .binary_search_by(|item| item.name.cmp(&bench1.name))
+            .unwrap();
+        let idx4 = bench_vec_4
+            .binary_search_by(|item| item.name.cmp(&bench1.name))
+            .unwrap();
+        let bench2 = &bench_vec_2[idx2];
+        let bench3 = &bench_vec_3[idx3];
+        let bench4 = &bench_vec_4[idx4];
+        if bench1.is_cycle {
+            println!(
+                "| {:<22} | {:>8.3} kc | {:>8.3} kc | {:>8.3} kc | {:>8.3} kc |",
+                bench1.name,
+                bench1.time / 1000.0,
+                bench2.time / 1000.0,
+                bench3.time / 1000.0,
+                bench4.time / 1000.0
+            );
+        } else {
+            println!(
+                "| {:<22} | {:>8.3} uc | {:>8.3} uc | {:>8.3} uc | {:>8.3} uc |",
+                bench1.name,
+                bench1.time / 0.000001,
+                bench2.time / 0.000001,
+                bench3.time / 0.000001,
+                bench4.time / 0.000001
+            );
+        }
+    }
     //
     Ok(())
 }

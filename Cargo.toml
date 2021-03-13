@@ -1,6 +1,6 @@
 [package]
 name = "cmp_string_match"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["aki <aki.akaguma@hotmail.com>"]
 edition = "2018"
 description = "research: comparing string match of rust"
@@ -40,20 +40,20 @@ members = [
 ]
 
 [[bench]]
-name = "bench-match-string"
-path = "benches/bench-match-string.rs"
+name = "bench-find-string"
+path = "benches/bench-find-string.rs"
 harness = false
 
 [[bench]]
-name = "bench-match-regex"
-path = "benches/bench-match-regex.rs"
+name = "bench-find-regex"
+path = "benches/bench-find-regex.rs"
 harness = false
 
 [[bench]]
-name = "bench-match-glob"
-path = "benches/bench-match-glob.rs"
+name = "bench-find-glob"
+path = "benches/bench-find-glob.rs"
 harness = false
 
-[[bin]]
-name = "bin-match-string"
-path = "src/bin-match-string.rs"
+#[[bin]]
+#name = "bin-match-string"
+#path = "src/bin-match-string.rs"

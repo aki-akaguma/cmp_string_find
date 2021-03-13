@@ -1,4 +1,4 @@
-pub fn do_match_string_std(texts: &[&str], pattern: &str) -> anyhow::Result<usize> {
+pub fn do_find_string_std(texts: &[&str], pattern: &str) -> anyhow::Result<usize> {
     let mut found: usize = 0;
     for line in texts {
         if let Some(_n) = line.find(pattern) {
@@ -8,7 +8,7 @@ pub fn do_match_string_std(texts: &[&str], pattern: &str) -> anyhow::Result<usiz
     Ok(found)
 }
 
-pub fn do_match_string_twoway(texts: &[&str], pattern: &str) -> anyhow::Result<usize> {
+pub fn do_find_string_twoway(texts: &[&str], pattern: &str) -> anyhow::Result<usize> {
     let mut found: usize = 0;
     for line in texts {
         if let Some(_n) = twoway::find_str(line, pattern) {
@@ -18,7 +18,7 @@ pub fn do_match_string_twoway(texts: &[&str], pattern: &str) -> anyhow::Result<u
     Ok(found)
 }
 
-pub fn do_match_string_memchr(texts: &[&str], pattern: &str) -> anyhow::Result<usize> {
+pub fn do_find_string_memchr(texts: &[&str], pattern: &str) -> anyhow::Result<usize> {
     let mut found: usize = 0;
     for line in texts {
         if let Some(_n) = memchr_find_str(line, pattern) {
@@ -60,7 +60,7 @@ fn memchr_find_str(haystack: &str, needle: &str) -> Option<usize> {
     None
 }
 
-pub fn do_match_string_memmem(
+pub fn do_find_string_memmem(
     texts: &[&str],
     pat: &memmem::TwoWaySearcher,
 ) -> anyhow::Result<usize> {
@@ -74,7 +74,7 @@ pub fn do_match_string_memmem(
     Ok(found)
 }
 
-pub fn do_match_string_aho(
+pub fn do_find_string_aho(
     texts: &[&str],
     pat: &aho_corasick::AhoCorasick,
 ) -> anyhow::Result<usize> {
@@ -87,7 +87,7 @@ pub fn do_match_string_aho(
     Ok(found)
 }
 
-pub fn do_match_string_libc(texts: &[&str], pattern: &str) -> anyhow::Result<usize> {
+pub fn do_find_string_libc(texts: &[&str], pattern: &str) -> anyhow::Result<usize> {
     use libc::c_void;
     use libc::memmem;
     let needle_ptr = pattern.as_bytes().as_ptr() as *const c_void;
@@ -107,7 +107,7 @@ pub fn do_match_string_libc(texts: &[&str], pattern: &str) -> anyhow::Result<usi
     Ok(found)
 }
 
-pub fn do_match_regex_regex(texts: &[&str], re: &regex::Regex) -> anyhow::Result<usize> {
+pub fn do_find_regex_regex(texts: &[&str], re: &regex::Regex) -> anyhow::Result<usize> {
     let mut found: usize = 0;
     for line in texts {
         /*
@@ -122,7 +122,7 @@ pub fn do_match_regex_regex(texts: &[&str], re: &regex::Regex) -> anyhow::Result
     Ok(found)
 }
 
-pub fn do_match_regex_fancy(texts: &[&str], re: &fancy_regex::Regex) -> anyhow::Result<usize> {
+pub fn do_find_regex_fancy(texts: &[&str], re: &fancy_regex::Regex) -> anyhow::Result<usize> {
     let mut found: usize = 0;
     for line in texts {
         /*
@@ -137,7 +137,7 @@ pub fn do_match_regex_fancy(texts: &[&str], re: &fancy_regex::Regex) -> anyhow::
     Ok(found)
 }
 
-pub fn do_match_regex_onig(texts: &[&str], re: &onig::Regex) -> anyhow::Result<usize> {
+pub fn do_find_regex_onig(texts: &[&str], re: &onig::Regex) -> anyhow::Result<usize> {
     let mut found: usize = 0;
     for line in texts {
         /*
@@ -152,7 +152,7 @@ pub fn do_match_regex_onig(texts: &[&str], re: &onig::Regex) -> anyhow::Result<u
     Ok(found)
 }
 
-pub fn do_match_regex_pcre(texts: &[&str], re: &pcre2::bytes::Regex) -> anyhow::Result<usize> {
+pub fn do_find_regex_pcre(texts: &[&str], re: &pcre2::bytes::Regex) -> anyhow::Result<usize> {
     let mut found: usize = 0;
     for line in texts {
         /*
@@ -167,7 +167,7 @@ pub fn do_match_regex_pcre(texts: &[&str], re: &pcre2::bytes::Regex) -> anyhow::
     Ok(found)
 }
 
-pub fn do_match_glob_glob(texts: &[&str], pat: &glob::Pattern) -> anyhow::Result<usize> {
+pub fn do_find_glob_glob(texts: &[&str], pat: &glob::Pattern) -> anyhow::Result<usize> {
     let mut found: usize = 0;
     for line in texts {
         if pat.matches(line) {
@@ -177,7 +177,7 @@ pub fn do_match_glob_glob(texts: &[&str], pat: &glob::Pattern) -> anyhow::Result
     Ok(found)
 }
 
-pub fn do_match_glob_globber(texts: &[&str], pat: &globber::Pattern) -> anyhow::Result<usize> {
+pub fn do_find_glob_globber(texts: &[&str], pat: &globber::Pattern) -> anyhow::Result<usize> {
     let mut found: usize = 0;
     for line in texts {
         if pat.matches(line) {
@@ -187,7 +187,7 @@ pub fn do_match_glob_globber(texts: &[&str], pat: &globber::Pattern) -> anyhow::
     Ok(found)
 }
 
-pub fn do_match_glob_capturing(
+pub fn do_find_glob_capturing(
     texts: &[&str],
     pat: &capturing_glob::Pattern,
 ) -> anyhow::Result<usize> {
@@ -200,7 +200,7 @@ pub fn do_match_glob_capturing(
     Ok(found)
 }
 
-pub fn do_match_glob_globset(texts: &[&str], pat: &globset::GlobMatcher) -> anyhow::Result<usize> {
+pub fn do_find_glob_globset(texts: &[&str], pat: &globset::GlobMatcher) -> anyhow::Result<usize> {
     let mut found: usize = 0;
     for line in texts {
         if pat.is_match(line) {
