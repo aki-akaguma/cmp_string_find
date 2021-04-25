@@ -1,24 +1,24 @@
 # cmp_string_match
 research: comparing string match of rust
 
-rustc 1.50.0 (cb75ad5db 2021-02-10)
+rustc 1.51.0 (2fd73fabe 2021-03-23)
 
 |         `name`         | `bench:en`  | `bench:ja`  |  `musl:en`  |  `musl:ja`  |
 |:-----------------------|------------:|------------:|------------:|------------:|
-| cmp-string-memchr      |   12.477 kc |   12.587 kc |   13.940 kc |   14.050 kc |
-| cmp-regex-regex        |   19.005 kc |   18.713 kc |   20.888 kc |   20.931 kc |
-| cmp-regex-fancy        |   22.957 kc |   22.652 kc |   24.851 kc |   24.705 kc |
-| cmp-string-aho         |   36.059 kc |   36.275 kc |   34.365 kc |   38.160 kc |
-| cmp-string-libc        |   37.132 kc |   46.151 kc |   45.409 kc |   51.458 kc |
-| cmp-string-memmem      |   52.831 kc |   41.331 kc |   57.372 kc |   39.599 kc |
-| cmp-regex-pcre         |   78.281 kc |  204.005 kc |   92.071 kc |  262.495 kc |
-| cmp-string-twoway      |   97.555 kc |   82.479 kc |   95.033 kc |   80.995 kc |
-| cmp-string-std         |  103.919 kc |   89.543 kc |  101.030 kc |   84.890 kc |
-| cmp-regex-onig         |  144.206 kc |  146.922 kc |  492.660 kc |  496.659 kc |
-| cmp-glob-globset       |  285.891 kc |  287.925 kc |  284.374 kc |  289.259 kc |
-| cmp-glob-globber       | 1240.940 kc |  673.019 kc | 1299.597 kc |  684.208 kc |
-| cmp-glob-glob          | 2208.728 kc |  979.100 kc | 2212.058 kc |  968.245 kc |
-| cmp-glob-capturing     | 2322.110 kc | 1000.022 kc | 2288.584 kc |  999.854 kc |
+| cmp-string-memchr      |   12.483 kc |   12.481 kc |   13.900 kc |   13.856 kc |
+| cmp-regex-regex        |   19.119 kc |   19.097 kc |   20.664 kc |   20.759 kc |
+| cmp-regex-fancy        |   22.620 kc |   22.704 kc |   24.353 kc |   24.327 kc |
+| cmp-string-aho         |   34.282 kc |   36.355 kc |   34.343 kc |   38.300 kc |
+| cmp-string-libc        |   37.042 kc |   46.203 kc |   42.719 kc |   52.180 kc |
+| cmp-string-memmem      |   57.622 kc |   40.067 kc |   55.967 kc |   41.256 kc |
+| cmp-regex-pcre         |   79.521 kc |  207.884 kc |   91.492 kc |  252.451 kc |
+| cmp-string-twoway      |   98.094 kc |   80.943 kc |   91.845 kc |   80.231 kc |
+| cmp-string-std         |  102.515 kc |   82.253 kc |  103.957 kc |   81.925 kc |
+| cmp-regex-onig         |  143.011 kc |  143.545 kc |  505.089 kc |  501.320 kc |
+| cmp-glob-globset       |  288.332 kc |  285.554 kc |  285.973 kc |  286.569 kc |
+| cmp-glob-globber       | 1295.129 kc |  678.078 kc | 1238.279 kc |  675.573 kc |
+| cmp-glob-glob          | 2217.110 kc |  964.833 kc | 2217.373 kc |  966.302 kc |
+| cmp-glob-capturing     | 2285.809 kc | 1001.333 kc | 2291.530 kc | 1000.428 kc |
 
 
 This benchmark measures string search.
