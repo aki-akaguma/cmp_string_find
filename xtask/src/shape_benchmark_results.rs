@@ -2,7 +2,7 @@ use anyhow::Context;
 use std::io::BufRead;
 
 pub fn run(_program: &str, _args: &[&str]) -> anyhow::Result<()> {
-    let mut bench_vec_1 = get_bench("z.bench.en.1.log")?;
+    let bench_vec_1 = get_bench("z.bench.en.1.log")?;
     let mut bench_vec_2 = get_bench("z.bench.ja.1.log")?;
     let mut bench_vec_3 = get_bench("z.musl.bench.en.1.log")?;
     let mut bench_vec_4 = get_bench("z.musl.bench.ja.1.log")?;
@@ -81,7 +81,7 @@ fn output4(
     Ok(())
 }
 
-fn output(bench_vec: Vec<BenchStr>) -> anyhow::Result<()> {
+fn _output(bench_vec: Vec<BenchStr>) -> anyhow::Result<()> {
     println!("| {:^22} | {:^11} |", "`name`", "`bench`");
     println!("|:{:<22}-|-{:>11}:|", "-".repeat(22), "-".repeat(11),);
     for bench in bench_vec {
@@ -107,7 +107,7 @@ pub struct BenchStr {
     pub oh_size: u64,   // bytes
 }
 
-fn set_size(bench_vec: &mut Vec<BenchStr>, in_file: &str) -> anyhow::Result<()> {
+fn _set_size(bench_vec: &mut Vec<BenchStr>, in_file: &str) -> anyhow::Result<()> {
     let mut base_time = 0f64;
     let mut base_size = 0u64;
     let re_1 = regex::Regex::new(r"^ *(\d+)\t.*\t([^ ]+)$").unwrap();
