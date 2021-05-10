@@ -150,6 +150,8 @@ fn criterion_benchmark(c: &mut Criterion<CyclesPerByte>) {
 
 criterion_group!(
     name = benches;
-    config = Criterion::default().with_measurement(CyclesPerByte);
+    config = Criterion::default().with_measurement(CyclesPerByte)
+        .warm_up_time(std::time::Duration::from_millis(300))
+        .measurement_time(std::time::Duration::from_millis(1500));
     targets = criterion_benchmark);
 criterion_main!(benches);

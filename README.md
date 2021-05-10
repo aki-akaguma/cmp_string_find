@@ -7,20 +7,20 @@ The regex(1.5) is slower than regex(1.4)
 
 |         `name`         | `bench:en`  | `bench:ja`  |  `musl:en`  |  `musl:ja`  |
 |:-----------------------|------------:|------------:|------------:|------------:|
-| cmp-string-memchr      |   12.897 kc |   12.751 kc |   14.262 kc |   14.270 kc |
-| cmp-string-aho         |   34.029 kc |   36.524 kc |   34.203 kc |   36.381 kc |
-| cmp-string-libc        |   37.154 kc |   46.286 kc |   45.335 kc |   51.229 kc |
-| cmp-regex-regex        |   48.285 kc |   57.795 kc |   48.708 kc |   59.271 kc |
-| cmp-regex-fancy        |   51.236 kc |   60.717 kc |   51.693 kc |   62.343 kc |
-| cmp-string-memmem      |   55.845 kc |   41.526 kc |   54.931 kc |   42.441 kc |
-| cmp-regex-pcre         |   81.005 kc |  202.862 kc |   93.235 kc |  258.391 kc |
-| cmp-string-twoway      |   97.227 kc |   79.155 kc |   93.986 kc |   79.647 kc |
-| cmp-string-std         |  102.467 kc |   80.668 kc |   98.227 kc |   82.242 kc |
-| cmp-regex-onig         |  148.377 kc |  139.122 kc |  453.357 kc |  513.701 kc |
-| cmp-glob-globset       |  300.558 kc |  299.696 kc |  303.868 kc |  299.490 kc |
-| cmp-glob-globber       | 1295.015 kc |  725.144 kc | 1298.882 kc |  724.137 kc |
-| cmp-glob-glob          | 2160.983 kc |  969.667 kc | 2162.528 kc |  966.410 kc |
-| cmp-glob-capturing     | 2383.987 kc |  995.861 kc | 2315.247 kc |  996.929 kc |
+| cmp-string-memchr      |   12.791 kc |   12.827 kc |   14.275 kc |   14.236 kc |
+| cmp-string-aho         |   34.146 kc |   36.585 kc |   34.246 kc |   36.487 kc |
+| cmp-string-libc        |   37.105 kc |   46.236 kc |   45.364 kc |   51.340 kc |
+| cmp-regex-regex        |   48.399 kc |   57.970 kc |   48.578 kc |   59.285 kc |
+| cmp-regex-fancy        |   51.678 kc |   61.076 kc |   51.690 kc |   62.205 kc |
+| cmp-string-memmem      |   56.153 kc |   41.380 kc |   54.482 kc |   41.553 kc |
+| cmp-regex-pcre         |   79.352 kc |  203.931 kc |   91.500 kc |  264.839 kc |
+| cmp-string-twoway      |   96.632 kc |   80.222 kc |   93.587 kc |   78.698 kc |
+| cmp-string-std         |  101.449 kc |   80.869 kc |   98.608 kc |   82.995 kc |
+| cmp-regex-onig         |  144.101 kc |  143.322 kc |  450.817 kc |  514.653 kc |
+| cmp-glob-globset       |  298.435 kc |  303.670 kc |  298.675 kc |  299.082 kc |
+| cmp-glob-globber       | 1297.217 kc |  716.429 kc | 1295.699 kc |  718.851 kc |
+| cmp-glob-glob          | 2159.356 kc |  960.595 kc | 2158.646 kc |  961.765 kc |
+| cmp-glob-capturing     | 2317.993 kc |  995.677 kc | 2387.127 kc |  996.094 kc |
 
 
 - rustc 1.51.0 (2fd73fabe 2021-03-23): regex(1.4)
