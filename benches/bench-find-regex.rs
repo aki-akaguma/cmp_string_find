@@ -20,6 +20,8 @@ fn process_regex_pcre(texts: &[&str], re: &pcre2::bytes::Regex) -> anyhow::Resul
 mod create_data;
 
 fn criterion_benchmark(c: &mut Criterion<CyclesPerByte>) {
+    memx_cdy::memx_init();
+    //
     let (v, match_cnt, _pat_string_s, pat_regex_s, _pat_glob_s) = create_data::create_data();
     let vv: Vec<&str> = v.iter().map(|item| item.as_str()).collect();
     //let pattern = ".*Error.*";

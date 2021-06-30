@@ -1,6 +1,6 @@
 [package]
 name = "cmp_string_find"
-version = "0.1.5"
+version = "0.1.6"
 authors = ["aki <aki.akaguma@hotmail.com>"]
 edition = "2018"
 description = "research: comparing string match of rust"
@@ -32,6 +32,7 @@ globset = "=0.4"
 globber = "=0.1"
 
 [dev-dependencies]
+memx-cdy = "0.1"
 criterion = "0.3"
 criterion-cycles-per-byte = "0.1"
 
