@@ -2,11 +2,16 @@ TBD
 ===
 Unreleased changes. Release notes have not yet been written.
 
+0.1.7 (2021-06-30)
+=====
+
+* update depends: fancy-regex(0.6.0), onig(6.2.0)
+
 0.1.6 (2021-06-30)
 =====
 
-* update depends: anyhow(1.0.41), fancy-regex(0.6.0), globset(0.4.8)
-* update depends: libc(0.2.97), onig(6.2.0), twoway(0.2.2)
+* update depends: anyhow(1.0.41), globset(0.4.8)
+* update depends: libc(0.2.97), twoway(0.2.2)
 * add memx-cdy(0.1) to `dev-dependencies`
 
 0.1.5 (2021-05-10)

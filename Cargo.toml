@@ -1,6 +1,6 @@
 [package]
 name = "cmp_string_find"
-version = "0.1.6"
+version = "0.1.7"
 authors = ["aki <aki.akaguma@hotmail.com>"]
 edition = "2018"
 description = "research: comparing string match of rust"
@@ -22,8 +22,8 @@ memmem = "=0.1"      # two way
 libc = "=0.2"
 
 regex = "=1.5"
-fancy-regex = "=0.5"
-onig = "=6.1"        # Oniguruma, ruby compatible
+fancy-regex = "=0.6"
+onig = "=6.2"        # Oniguruma, ruby compatible
 pcre2 = "=0.2"       # perl compatible
 
 glob = "=0.3"
