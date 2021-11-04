@@ -2,6 +2,11 @@ TBD
 ===
 Unreleased changes. Release notes have not yet been written.
 
+0.1.8 (2021-11-04)
+=====
+
+* update depends: fancy-regex(0.7.1), onig(6.3.1)
+
 0.1.7 (2021-06-30)
 =====
 

@@ -1,9 +1,27 @@
 # cmp_string_find
 research: comparing string match of rust
 
-The regex(1.5) is slower than regex(1.4)
+- rustc 1.56.1 (59eed8a2a 2021-11-01):
+
+|         `name`         | `bench:en`  | `bench:ja`  |  `musl:en`  |  `musl:ja`  |
+|:-----------------------|------------:|------------:|------------:|------------:|
+| cmp-string-memchr      |   13.307 kc |   13.137 kc |   13.040 kc |   13.035 kc |
+| cmp-string-libc        |   15.928 kc |   15.667 kc |   15.736 kc |   15.708 kc |
+| cmp-string-aho         |   34.048 kc |   36.745 kc |   33.901 kc |   36.091 kc |
+| cmp-regex-regex        |   44.753 kc |   55.017 kc |   45.582 kc |   56.602 kc |
+| cmp-regex-fancy        |   48.145 kc |   58.383 kc |   49.230 kc |   59.748 kc |
+| cmp-string-memmem      |   52.901 kc |   41.930 kc |   57.138 kc |   42.091 kc |
+| cmp-regex-pcre         |   76.932 kc |  206.335 kc |   76.586 kc |  217.096 kc |
+| cmp-string-std         |   91.089 kc |   77.180 kc |   87.368 kc |   79.573 kc |
+| cmp-string-twoway      |  105.950 kc |   78.751 kc |  101.520 kc |   77.747 kc |
+| cmp-regex-onig         |  149.329 kc |  142.154 kc |  513.281 kc |  517.292 kc |
+| cmp-glob-globset       |  304.769 kc |  304.190 kc |  302.853 kc |  303.697 kc |
+| cmp-glob-globber       | 1271.034 kc |  726.665 kc | 1258.292 kc |  708.728 kc |
+| cmp-glob-glob          | 2120.824 kc |  943.564 kc | 2108.887 kc |  942.760 kc |
+| cmp-glob-capturing     | 2407.025 kc | 1077.938 kc | 2403.759 kc | 1058.467 kc |
 
 - rustc 1.53.0 (53cb7b09b 2021-06-17): regex(1.5)
+The regex(1.5) is slower than regex(1.4)
 
 |         `name`         | `bench:en`  | `bench:ja`  |  `musl:en`  |  `musl:ja`  |
 |:-----------------------|------------:|------------:|------------:|------------:|
