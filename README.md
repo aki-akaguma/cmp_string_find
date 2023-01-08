@@ -1,5 +1,11 @@
 # cmp_string_find
+
+![Rust Version][rustc-image]
+![Apache2/MIT licensed][license-image]
+
 research: comparing string match of rust
+
+## Benchmark Results
 
 - rustc 1.56.1 (59eed8a2a 2021-11-01):
 
@@ -123,3 +129,7 @@ a `pattern` string. It then returns the count of strings it contained.
 
 Measure the benchmark with what I wrote this part in other ways such as `regex`.
 
+[//]: # (badges)
+
+[rustc-image]: https://img.shields.io/badge/rustc-1.56+-blue.svg
+[license-image]: https://img.shields.io/badge/license-Apache2.0/MIT-blue.svg
